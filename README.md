@@ -140,4 +140,50 @@ utils
 安装
 npm i axios 
 
+### 9 登陆与注册介绍
+基础布局 （组件+样式）
+基本逻辑（登陆逻辑）
+进一步的逻辑的补充（登陆状态提示，表单验证，验证码处理）
+
+### 10登陆组件结构布局处理
+1,自己写 2vent组件拼装修改样式
+我们选2
+navBar 导航栏
+表单
+views login index.vue  配置路由 （路径可以直接在地址栏中使用）
+### 11 登录样式调整
+
+公共样式 写在index.less less可以嵌套  抽取单独的类名 多个使用。
+
+1，导航栏的样式调整
+styles ->index.less->
+
+.page-nav-bar{
+    background-color: #3296fa !important;
+    .van-nav-bar__title{
+        color: #fff;
+    }
+}
+
+2，登录表单样式调整
+  filed 输入框 
+  图标： vent官网试试看
+   input 支持自己的图标  （left-icon="smile-o"   right-icon="warning-o"）
+  或者 插槽（外部引入的图标） 
+
+  图标字体大小 主要是高
+<van-field    name="" type="password" placeholder="请输入验证码" >
+            <i slot="left-icon" class="toutiao toutiao-yanzhengma"></i>
+ </van-field>
+
+发送验证码 
+
+field 插入按钮
+
+
+
+
+
+
+
 
