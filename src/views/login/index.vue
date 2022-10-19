@@ -5,7 +5,10 @@
     <!-- /导航栏 -->
     <!-- 登陆表单 -->
     <van-form @submit="onSubmit">
-        <van-field v-model="user.mobile" name="手机号" placeholder="请输入手机号">
+        <van-field v-model="user.mobile" name="手机号"
+         placeholder="请输入手机号"
+         :rules="[{ required: true, message: '请填写用户名' }]"
+         >
             <i slot="left-icon" class="toutiao toutiao-shouji"></i>
         </van-field>
         <van-field v-model="user.code" name="验证码"  placeholder="请输入验证码">

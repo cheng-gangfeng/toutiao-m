@@ -224,6 +224,9 @@ forbidClick: true,
 duration:0//吐司持续时间 0 一直持续。
 });
 
-        this.$toast.success('登录成功')
+this.$toast.success('登录成功')
 
 this.$toast.fail('手机号或验证码错误')
+### 14 表单验证
+使用vent组件的表单验证  找到组件
+:rules="[{ required: true, message: '请填写用户名' }]"
