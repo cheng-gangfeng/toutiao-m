@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    // 按需导入请求函数
+    // 按需导入登录请求函数
     import {login} from '../../api/user'
 export default {
     name: 'Login',
@@ -38,23 +38,36 @@ export default {
     },
     methods: {
         // 表单登录提交事件 点击登录之后会触发这个事件
-        // 
+     
       async  onSubmit() {
         // 1，获取表单数据
         const user=this.user
         console.log(user);
         // 2，表单验证
+        // 3.1登录提示 vent toast轻提示
+        // 引入 Toast 组件后，会自动在 Vue 的 prototype 上挂载 $toast 方法，便于在组件内调用。
+        this.$toast.loading({
+            message: '登录中',
+            forbidClick: true,
+            duration:0//吐司持续时间 0 一直持续。
+        });
+
         // 3，提交表单请求 登录（定义api 前端请求函数）
         // 成功或者失败
         try {
+            // 登录后得到的后端数据
             const res=await login(user)
-            console.log('登录成功',res);
+            // console.log('登录成功',res);
+            // 当新建一个吐司会覆盖前一个吐司。
+            this.$toast.success('登录成功')
         } catch (err) {
             // 登录失败
             if(err.response.status===400){
-                console.log('手机号或验证码错误');
+                // console.log('手机号或验证码错误');
+                this.$toast.fail('手机号或验证码错误')
             }else{
-                console.log('登录失败请稍后 网络不好 服务器错误');
+                // console.log('登录失败请稍后 网络不好 服务器错误');
+                this.$toast.fail('登录失败请稍后重试！！！')
             }
         }
         // 4，根据请求响应结果 处理后续操作
